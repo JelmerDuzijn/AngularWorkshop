@@ -9,11 +9,9 @@ import {Beer, BeerState} from "./beer.model";
 export class BeerDataStateService {
 
   private readonly beers: BehaviorSubject<Array<BeerState>>;
-  private readonly selectedBeer: Subject<BeerState>;
 
   constructor(private readonly _httpClient: HttpClient) {
     this.beers = new BehaviorSubject<Array<BeerState>>([]);
-    this.selectedBeer = new Subject<BeerState>();
   }
 
   public loadBeers(): void {
