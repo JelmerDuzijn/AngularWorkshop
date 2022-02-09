@@ -1,0 +1,32 @@
+<div fxLayout="column" fxLayoutGap="20px">
+
+  <button mat-icon-button mat-raised-button (click)="navigateBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <mat-card class="beer-card" *ngIf="beer$ | async as beer">
+
+    <mat-card-header>
+      <mat-card-title>{{beer.name}}</mat-card-title>
+      <mat-card-subtitle>{{beer.brand}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <div mat-card-image fxLayout="row" fxLayoutAlign="center center">
+      <img [src]="beer.photoUrl" class="width-50 rounded-full">
+    </div>
+
+    <mat-card-content>
+      <p>{{beer.description}}</p>
+    </mat-card-content>
+
+    <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+      <button mat-raised-button mat-icon-button color="warn" [matBadge]="beer.dislikes" (click)="dislike(beer.id)">
+        <mat-icon>thumb_down</mat-icon>
+      </button>
+      <button mat-raised-button mat-icon-button color="primary" [matBadge]="beer.likes" (click)="like(beer.id)">
+        <mat-icon>thumb_up</mat-icon>
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>

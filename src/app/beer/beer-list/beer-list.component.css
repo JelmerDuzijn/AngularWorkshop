@@ -1,0 +1,11 @@
+:host {
+  width: 50%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+img:hover {
+  cursor: pointer;
+}

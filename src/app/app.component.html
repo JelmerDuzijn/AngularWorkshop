@@ -1,0 +1,21 @@
+<!--We definieëren de root flex container: een kolom (fxLayout="column") met height/width: 100% (fxFill)-->
+<div fxLayout="column" fxFill fxLayoutGap="20px">
+  <!-- De mat-toolbar is het first flex-child van de bovenliggende container met 5% ruimte (fxFlex=5)-->
+  <!-- De mat-toolbar is ook zelf een flex-container (fxLayout, fxLayoutGap)-->
+  <mat-toolbar fxFlex="5" fxLayout="row" fxLayoutGap="10px" color="primary">
+    <!--  Inhoud van de container  -->
+    <span>{{title}}</span>
+    <button mat-icon-button mat-raised-button color="accent" routerLink="/home">
+      <mat-icon>home</mat-icon>
+    </button>
+
+    <button mat-icon-button mat-raised-button color="accent" routerLink="/beers">
+      <mat-icon>sports_bar</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <!-- Deze div is second flex-child van de root. Deze vult de overige ruimte -->
+  <div fxFlex fxLayoutAlign="center start">
+    <router-outlet></router-outlet>
+  </div>
+</div>
