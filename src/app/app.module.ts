@@ -7,19 +7,30 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatIconModule} from "@angular/material/icon";
+import {Route, RouterModule} from "@angular/router";
+import {HomeComponent} from './home/home.component';
 import {HttpClientModule} from "@angular/common/http";
-import {BeerListComponent} from "./beer/beer-list/beer-list.component";
-import {OrderBeerButtonComponent} from "./beer/order-beer-button/order-beer-button.component";
-import {FormsModule} from "@angular/forms";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatTableModule} from "@angular/material/table";
-import {MatInputModule} from "@angular/material/input";
+
+const routes: Route[] = [
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'beers',
+    loadChildren: () => import('./beer/beer.module').then(m => m.BeerModule)
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  }
+]
 
 @NgModule({
   declarations: [
     AppComponent,
-    BeerListComponent,
-    OrderBeerButtonComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -29,10 +40,7 @@ import {MatInputModule} from "@angular/material/input";
     MatButtonModule,
     FlexLayoutModule,
     MatIconModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatTableModule,
-    MatInputModule
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

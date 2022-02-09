@@ -6,3 +6,8 @@ export interface Beer {
   description: string;
   alcoholPercentage: number;
 }
+
+export interface BeerState extends Beer {
+  likes: number;
+  dislikes: number;
+}
